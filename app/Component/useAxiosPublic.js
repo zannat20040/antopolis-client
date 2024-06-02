@@ -2,7 +2,7 @@
 import axios from "axios";
 
 const axiosPublic = axios.create({
-  baseURL: "https://antopolis-job-task.vercel.app",
+  baseURL: "https://anopilis-server.vercel.app",
   withCredentials: true,
 });
 
