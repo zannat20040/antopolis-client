@@ -9,7 +9,7 @@ export default function Home() {
   // states
   const axiosPublic = useAxiosPublic();
   const [categoryOptions, setCategoryOptions] = useState([]);
-  const [selectedCategory, setSelectedCategory] = useState('Land animal');
+  const [selectedCategory, setSelectedCategory] = useState('All');
   const [allAnimals, setAllAnimals] = useState([]);
 
   useEffect(() => {
