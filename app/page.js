@@ -36,11 +36,10 @@ export default function Home() {
           {categoryOptions.map((data) => (
             <button
               key={data}
-              className={`btn btn-outline rounded-full py-4 px-5 ${
-                selectedCategory === data
+              className={`capitalize btn btn-outline rounded-full py-4 px-5 ${selectedCategory === data
                   ? 'border-green-500 text-green-500'
                   : 'border-red-500 text-red-500'
-              }`}
+                }`}
               onClick={() => setSelectedCategory(data)}
             >
               {data}

@@ -9,13 +9,13 @@ const Modal = () => {
   const [fileName, setFileName] = useState("Image");
   const [file, setFile] = useState(null);
   const [categories, setCategories] = useState([]);
-  const [categoryOptions, setCategoryOptions] = useState([]);
+  const [allCategoryOptions, setAllCategoryOptions] = useState([]);
 
   useEffect(() => {
-    axiosPublic
-      .get("/allCategories")
-      .then((res) => setCategoryOptions(res.data.categories))
-      .catch((err) => console.log(err));
+    axiosPublic.get("/allCategories")
+    .then((res) => setAllCategoryOptions(res.data.categories))
+    .catch((err) => console.log(err));
+
   }, [axiosPublic]);
 
   const handleFileChange = (event) => {
@@ -108,7 +108,7 @@ const Modal = () => {
           </div>
           <div className="flex flex-col gap-2">
             <h4 className="text-black">Select Categories:</h4>
-            {categoryOptions.map((option) => (
+            {allCategoryOptions.map((option) => (
               <label key={option} className="flex items-center">
                 <input
                   type="checkbox"
