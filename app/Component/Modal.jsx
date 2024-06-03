@@ -16,7 +16,7 @@ const Modal = () => {
       .get("/allCategories")
       .then((res) => setCategoryOptions(res.data.categories))
       .catch((err) => console.log(err));
-  }, []);
+  }, [axiosPublic]);
 
   const handleFileChange = (event) => {
     if (event.target.files && event.target.files[0]) {
