@@ -8,9 +8,7 @@ const Modal = () => {
   const [animalName, setAnimalName] = useState("Animal Name");
   const [fileName, setFileName] = useState("Image");
   const [file, setFile] = useState(null);
-  const [categories, setCategories] = useState([]);
-  const [allCategoryOptions, setAllCategoryOptions] = useState([]);
-
+  
   useEffect(() => {
     axiosPublic.get("/allCategories")
     .then((res) => setAllCategoryOptions(res.data.categories))
@@ -34,16 +32,7 @@ const Modal = () => {
     document.getElementById("file").click();
   };
 
-  const handleCategoryChange = (event) => {
-    const { value, checked } = event.target;
-    if (checked) {
-      setCategories((prevCategories) => [...prevCategories, value]);
-    } else {
-      setCategories((prevCategories) =>
-        prevCategories.filter((category) => category !== value)
-      );
-    }
-  };
+  
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -54,7 +43,6 @@ const Modal = () => {
       const data = {
         animalName,
         photo_url,
-        categories,
       };
 
       console.log("Storing in database...", data);
@@ -106,21 +94,7 @@ const Modal = () => {
               required
             />
           </div>
-          <div className="flex flex-col gap-2">
-            <h4 className="text-black">Select Categories:</h4>
-            {allCategoryOptions.map((option) => (
-              <label key={option} className="flex items-center">
-                <input
-                  type="checkbox"
-                  value={option}
-                  checked={categories.includes(option)}
-                  onChange={handleCategoryChange}
-                  className="mr-2"
-                />
-                <span className="text-black">{option}</span>
-              </label>
-            ))}
-          </div>
+      
           <button
             type="submit"
             className="btn btn-active bg-black text-white text-lg font-normal"
