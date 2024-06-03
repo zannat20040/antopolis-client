@@ -12,7 +12,7 @@ const Modal = () => {
   useEffect(() => {
     axiosPublic
       .get("/allCategories")
-      .then((res) => setAllCategoryOptions(res.data.categories))
+      .then((res) => setAllCategoryOptions(res?.data?.categories))
       .catch((err) => console.log(err));
   }, [axiosPublic]);
 

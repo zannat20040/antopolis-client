@@ -14,7 +14,7 @@ export default function Home() {
 
   useEffect(() => {
     axiosPublic.get("/allCategories")
-      .then((res) => setCategoryOptions(res.data.categories))
+      .then((res) => setCategoryOptions(res?.data?.categories))
       .catch((err) => console.log(err));
 
     axiosPublic.get("/allAnimals")
