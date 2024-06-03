@@ -8,12 +8,12 @@ const Modal = () => {
   const [animalName, setAnimalName] = useState("Animal Name");
   const [fileName, setFileName] = useState("Image");
   const [file, setFile] = useState(null);
-  
-  useEffect(() => {
-    axiosPublic.get("/allCategories")
-    .then((res) => setAllCategoryOptions(res.data.categories))
-    .catch((err) => console.log(err));
 
+  useEffect(() => {
+    axiosPublic
+      .get("/allCategories")
+      .then((res) => setAllCategoryOptions(res.data.categories))
+      .catch((err) => console.log(err));
   }, [axiosPublic]);
 
   const handleFileChange = (event) => {
@@ -31,8 +31,6 @@ const Modal = () => {
   const handleDivClick = () => {
     document.getElementById("file").click();
   };
-
-  
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -54,8 +52,6 @@ const Modal = () => {
           toast.success("New animal added successfully");
         })
         .catch((err) => console.log(err));
-
-      // Here you can add the logic to store `data` in your database
     } catch (error) {
       console.error("Error uploading image:", error);
     }
@@ -66,6 +62,7 @@ const Modal = () => {
       <dialog id="my_modal_2" className="modal max-w-sm mx-auto">
         <form onSubmit={handleSubmit} className="modal-box flex flex-col gap-3">
           <h3 className="mb-2 text-lg text-black">Add Animal</h3>
+
           <input
             type="text"
             value={animalName}
@@ -74,11 +71,13 @@ const Modal = () => {
             className="input w-full bg-[#F2F2F2] text-black py-4 px-5"
             required
           />
+
           <div
             className="input w-full relative bg-[#F2F2F2] flex items-center justify-between cursor-pointer py-4 px-5 pr-2"
             onClick={handleDivClick}
           >
             <span className="text-black">{fileName}</span>
+
             <label
               htmlFor="file"
               className="text-sm bg-[#CCCCCC] px-2 py-[6px] rounded-lg text-black cursor-pointer"
@@ -86,6 +85,7 @@ const Modal = () => {
             >
               Upload
             </label>
+
             <input
               type="file"
               id="file"
@@ -94,7 +94,7 @@ const Modal = () => {
               required
             />
           </div>
-      
+
           <button
             type="submit"
             className="btn btn-active bg-black text-white text-lg font-normal"
@@ -102,6 +102,7 @@ const Modal = () => {
             Create Animal
           </button>
         </form>
+
         <form method="dialog" className="modal-backdrop">
           <button>Close</button>
         </form>

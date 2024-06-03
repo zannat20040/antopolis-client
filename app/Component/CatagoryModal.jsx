@@ -9,7 +9,6 @@ const CatagoryModal = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-
     axiosPublic
       .put("/allCategories", {catagory})
       .then((res) => {
@@ -21,6 +20,7 @@ const CatagoryModal = () => {
 
   return (
     <dialog id="my_modal_1" className="modal max-w-sm mx-auto">
+
       <form onSubmit={handleSubmit} className="modal-box flex flex-col gap-3">
         <h3 className="mb-2 text-lg text-black">Add Catagory</h3>
         <input
@@ -39,6 +39,7 @@ const CatagoryModal = () => {
           Save
         </button>
       </form>
+      
       <form method="dialog" className="modal-backdrop">
         <button>Close</button>
       </form>
