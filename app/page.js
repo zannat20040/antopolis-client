@@ -3,7 +3,7 @@ import Image from "next/image";
 import Modal from "./Component/Modal";
 import CatagoryModal from "./Component/CatagoryModal";
 import { useEffect, useState } from "react";
-import useAxiosPublic from "./Component/useAxiosPublic";
+import useAxiosPublic from "./Custom Hooks/useAxiosPublic";
 
 export default function Home() {
   const axiosPublic = useAxiosPublic();
@@ -12,16 +12,14 @@ export default function Home() {
   const [allAnimals, setAllAnimals] = useState([]);
 
   useEffect(() => {
-    axiosPublic
-      .get("/allCategories")
+    axiosPublic.get("/allCategories")
       .then((res) => setCategoryOptions(res.data.categories))
       .catch((err) => console.log(err));
 
-    axiosPublic
-      .get("/allAnimals")
+    axiosPublic.get("/allAnimals")
       .then((res) => setAllAnimals(res.data))
       .catch((err) => console.log(err));
-  }, []);
+  }, [axiosPublic]);
 
   const filterAnimalsByCategory = () => {
     return selectedCategory

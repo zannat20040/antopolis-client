@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { ImageUpload } from "./ImageUpload";
+import { ImageUpload } from "../Custom Hooks/ImageUpload";
 import toast from "react-hot-toast";
-import useAxiosPublic from "./useAxiosPublic";
+import useAxiosPublic from "../Custom Hooks/useAxiosPublic";
 
 const Modal = () => {
   const axiosPublic = useAxiosPublic();

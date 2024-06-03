@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import toast from "react-hot-toast";
-import useAxiosPublic from "./useAxiosPublic";
+import useAxiosPublic from "../Custom Hooks/useAxiosPublic";
 
 const CatagoryModal = () => {
   const axiosPublic = useAxiosPublic()
